@@ -58,7 +58,7 @@ class AudioLectureController extends Controller
             ->orderBy('sort_order')
             ->get();
 
-        return Inertia::render('AudioLectures/Index', [
+        return Inertia::render('Audio/Index', [
             'audioLectures' => $audioLectures,
             'categories' => $categories,
             'audioSeries' => $audioSeries,
@@ -77,7 +77,7 @@ class AudioLectureController extends Controller
             ->take(3)
             ->get();
 
-        return Inertia::render('AudioLectures/Show', [
+        return Inertia::render('Audio/Show', [
             'audioLecture' => $audioLecture,
             'relatedLectures' => $relatedLectures,
         ]);
@@ -92,7 +92,7 @@ class AudioLectureController extends Controller
         ->orderBy('sort_order')
         ->paginate(12);
 
-        return Inertia::render('AudioLectures/Series', [
+        return Inertia::render('Audio/Series', [
             'series' => $series,
         ]);
     }

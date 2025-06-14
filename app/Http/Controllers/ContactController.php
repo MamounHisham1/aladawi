@@ -10,7 +10,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Contact');
+        return Inertia::render('Contact/Index');
     }
 
     public function store(Request $request)

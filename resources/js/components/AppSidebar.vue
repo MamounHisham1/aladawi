@@ -10,9 +10,33 @@ import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        href: '/dashboard',
+        title: 'الرئيسية',
+        href: '/',
         icon: LayoutGrid,
+    },
+    {
+        title: 'عن الشيخ',
+        href: '/about',
+    },
+    {
+        title: 'الفتاوى',
+        href: '/fatwas',
+    },
+    {
+        title: 'المحاضرات الصوتية',
+        href: '/audio',
+    },
+    {
+        title: 'الكتب',
+        href: '/books',
+    },
+    {
+        title: 'المقالات',
+        href: '/articles',
+    },
+    {
+        title: 'اتصل بنا',
+        href: '/contact',
     },
 ];
 
@@ -36,7 +60,7 @@ const footerNavItems: NavItem[] = [
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" as-child>
-                        <Link :href="route('dashboard')">
+                        <Link :href="route('home')">
                             <AppLogo />
                         </Link>
                     </SidebarMenuButton>
