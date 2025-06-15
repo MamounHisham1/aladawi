@@ -33,12 +33,10 @@ const getYouTubeEmbedUrl = (url: string) => {
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="container mx-auto px-4 py-8">
             <div class="max-w-4xl mx-auto">
-                <h1 class="text-4xl font-bold mb-6">{{ fatwa.question_ar }}</h1>
+                <h1 class="text-4xl font-bold mb-6">{{ fatwa.title_ar }}</h1>
                 
                 <div class="mb-6 text-gray-600 dark:text-gray-400">
-                    <span>{{ fatwa.category?.name_ar || 'غير محدد' }}</span>
-                    <span class="mx-2">•</span>
-                    <span>{{ new Date(fatwa.fatwa_date).toLocaleDateString('ar-SA') }}</span>
+                    <span>{{ fatwa.category?.name_ar || 'غير محدد' }}</span>>
                 </div>
                 
                 <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
