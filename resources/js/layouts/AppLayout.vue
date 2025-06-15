@@ -126,7 +126,7 @@ onMounted(() => {
                         <div v-else class="hidden md:flex items-center space-x-4 rtl:space-x-reverse">
                             <span class="text-white text-sm rtl-text">مرحباً، {{ user.name }}</span>
                             <Link 
-                                :href="route('settings.profile')" 
+                                :href="route('profile.edit')" 
                                 class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
                             >
                                 الملف الشخصي
@@ -242,7 +242,7 @@ onMounted(() => {
                                 مرحباً، {{ user.name }}
                             </div>
                             <Link 
-                                :href="route('settings.profile')" 
+                                :href="route('profile.edit')" 
                                 class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
                             >
                                 الملف الشخصي
