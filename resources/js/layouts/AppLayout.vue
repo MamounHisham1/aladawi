@@ -31,14 +31,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="min-h-screen bg-white dark:bg-gray-900 transition-colors" :dir="$page.props.locale === 'ar' ? 'rtl' : 'ltr'">
+    <div class="min-h-screen bg-white dark:bg-gray-900 transition-colors rtl-content" dir="rtl">
         <!-- Header -->
         <header class="bg-emerald-800 dark:bg-emerald-900 shadow-lg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo -->
                     <div class="flex-shrink-0">
-                        <Link href="/" class="text-white text-xl font-bold">
+                        <Link href="/" class="text-white text-xl font-bold rtl-text">
                             الشيخ العدوي
                         </Link>
                     </div>
@@ -47,49 +47,49 @@ onMounted(() => {
                     <nav class="hidden md:flex space-x-8 rtl:space-x-reverse">
                         <Link 
                             :href="route('home')" 
-                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('home') }"
                         >
                             الرئيسية
                         </Link>
                         <Link 
                             :href="route('fatwas.index')" 
-                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('fatwas.*') }"
                         >
                             الفتاوى
                         </Link>
                         <Link 
                             :href="route('audio.index')" 
-                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('audio.*') }"
                         >
                             الصوتيات
                         </Link>
                         <Link 
                             :href="route('books.index')" 
-                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('books.*') }"
                         >
                             الكتب
                         </Link>
                         <Link 
                             :href="route('articles.index')" 
-                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('articles.*') }"
                         >
                             المقالات
                         </Link>
                         <Link 
                             :href="route('about')" 
-                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('about') }"
                         >
                             عن الشيخ
                         </Link>
                         <Link 
                             :href="route('contact.index')" 
-                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('contact.*') }"
                         >
                             اتصل بنا
@@ -127,49 +127,49 @@ onMounted(() => {
                     <div class="px-2 pt-2 pb-3 space-y-1">
                         <Link 
                             :href="route('home')" 
-                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('home') }"
                         >
                             الرئيسية
                         </Link>
                         <Link 
                             :href="route('fatwas.index')" 
-                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('fatwas.*') }"
                         >
                             الفتاوى
                         </Link>
                         <Link 
                             :href="route('audio.index')" 
-                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('audio.*') }"
                         >
                             الصوتيات
                         </Link>
                         <Link 
                             :href="route('books.index')" 
-                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('books.*') }"
                         >
                             الكتب
                         </Link>
                         <Link 
                             :href="route('articles.index')" 
-                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('articles.*') }"
                         >
                             المقالات
                         </Link>
                         <Link 
                             :href="route('about')" 
-                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('about') }"
                         >
                             عن الشيخ
                         </Link>
                         <Link 
                             :href="route('contact.index')" 
-                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                            class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
                             :class="{ 'bg-emerald-700': route().current('contact.*') }"
                         >
                             اتصل بنا
@@ -180,38 +180,38 @@ onMounted(() => {
         </header>
 
         <!-- Main Content -->
-        <main class="flex-1">
+        <main class="flex-1 rtl-content">
             <slot />
         </main>
 
         <!-- Footer -->
-        <footer class="bg-gray-800 dark:bg-gray-900 text-white">
+        <footer class="bg-gray-800 dark:bg-gray-900 text-white rtl-content">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">موقع الشيخ العدوي</h3>
-                        <p class="text-gray-300">
+                        <h3 class="text-lg font-semibold mb-4 rtl-text">موقع الشيخ العدوي</h3>
+                        <p class="text-gray-300 rtl-text">
                             موقع علمي يهتم بنشر الفتاوى والصوتيات والكتب الإسلامية
                         </p>
                     </div>
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">روابط سريعة</h3>
+                        <h3 class="text-lg font-semibold mb-4 rtl-text">روابط سريعة</h3>
                         <ul class="space-y-2">
-                            <li><Link :href="route('fatwas.index')" class="text-gray-300 hover:text-white">الفتاوى</Link></li>
-                            <li><Link :href="route('audio.index')" class="text-gray-300 hover:text-white">الصوتيات</Link></li>
-                            <li><Link :href="route('books.index')" class="text-gray-300 hover:text-white">الكتب</Link></li>
-                            <li><Link :href="route('articles.index')" class="text-gray-300 hover:text-white">المقالات</Link></li>
+                            <li><Link :href="route('fatwas.index')" class="text-gray-300 hover:text-white rtl-text">الفتاوى</Link></li>
+                            <li><Link :href="route('audio.index')" class="text-gray-300 hover:text-white rtl-text">الصوتيات</Link></li>
+                            <li><Link :href="route('books.index')" class="text-gray-300 hover:text-white rtl-text">الكتب</Link></li>
+                            <li><Link :href="route('articles.index')" class="text-gray-300 hover:text-white rtl-text">المقالات</Link></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">تواصل معنا</h3>
+                        <h3 class="text-lg font-semibold mb-4 rtl-text">تواصل معنا</h3>
                         <p class="text-gray-300 mb-2">
-                            <Link :href="route('contact.index')" class="hover:text-white">إرسال رسالة</Link>
+                            <Link :href="route('contact.index')" class="hover:text-white rtl-text">إرسال رسالة</Link>
                         </p>
                     </div>
                 </div>
                 <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                    <p class="text-gray-300">
+                    <p class="text-gray-300 rtl-text">
                         © {{ new Date().getFullYear() }} موقع الشيخ العدوي. جميع الحقوق محفوظة.
                     </p>
                 </div>
