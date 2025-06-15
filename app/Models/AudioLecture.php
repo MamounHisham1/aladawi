@@ -33,7 +33,8 @@ class AudioLecture extends Model implements HasMedia
         'is_featured',
         'is_published',
         'meta_title',
-        'meta_description'
+        'meta_description',
+        'created_by'
     ];
 
     protected $casts = [
@@ -70,6 +71,11 @@ class AudioLecture extends Model implements HasMedia
     public function audioSeries()
     {
         return $this->belongsTo(AudioSeries::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     public function scopePublished($query)

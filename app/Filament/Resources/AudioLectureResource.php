@@ -7,6 +7,7 @@ use App\Filament\Resources\AudioLectureResource\RelationManagers;
 use App\Models\AudioLecture;
 use App\Models\Category;
 use App\Models\AudioSeries;
+use App\Enums\UserRule;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,6 +15,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class AudioLectureResource extends Resource
 {
@@ -24,6 +26,41 @@ class AudioLectureResource extends Resource
     protected static ?string $navigationLabel = 'المحاضرات الصوتية';
 
     protected static ?string $navigationGroup = 'إدارة المحتوى';
+
+    public static function canViewAny(): bool
+    {
+        return Auth::user()->canPerform('access-admin');
+    }
+
+    public static function canCreate(): bool
+    {
+        return Auth::user()->canPerform('create-content');
+    }
+
+    public static function canEdit($record): bool
+    {
+        $user = Auth::user();
+        return $user->canEditContent($record);
+    }
+
+    public static function canDelete($record): bool
+    {
+        $user = Auth::user();
+        return $user->canDeleteContent($record);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $user = Auth::user();
+        $query = parent::getEloquentQuery();
+
+        // Content moderators can only see their own content
+        if ($user->getRole() === UserRule::CONTENT_MODERATOR) {
+            $query->where('created_by', $user->id);
+        }
+
+        return $query;
+    }
 
     public static function form(Form $form): Form
     {
@@ -50,6 +87,8 @@ class AudioLectureResource extends Resource
                             ->label('السلسلة الصوتية')
                             ->options(AudioSeries::pluck('title_ar', 'id'))
                             ->nullable(),
+                        Forms\Components\Hidden::make('created_by')
+                            ->default(Auth::id()),
                     ])->columns(2),
 
                 Forms\Components\Section::make('الوصف والمحتوى')
@@ -135,6 +174,10 @@ class AudioLectureResource extends Resource
                 Tables\Columns\TextColumn::make('category.name_ar')
                     ->label('التصنيف')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('createdBy.name')
+                    ->label('المؤلف')
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('audioSeries.title_ar')
                     ->label('السلسلة')
                     ->sortable(),

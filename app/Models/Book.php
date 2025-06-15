@@ -37,7 +37,8 @@ class Book extends Model implements HasMedia
         'is_featured',
         'is_published',
         'meta_title',
-        'meta_description'
+        'meta_description',
+        'created_by'
     ];
 
     protected $casts = [
@@ -75,6 +76,11 @@ class Book extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     public function scopePublished($query)

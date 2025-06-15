@@ -6,6 +6,7 @@ use App\Filament\Resources\FatwaResource\Pages;
 use App\Filament\Resources\FatwaResource\RelationManagers;
 use App\Models\Fatwa;
 use App\Models\Category;
+use App\Enums\UserRule;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class FatwaResource extends Resource
 {
@@ -23,6 +25,41 @@ class FatwaResource extends Resource
     protected static ?string $navigationLabel = 'الفتاوى';
 
     protected static ?string $navigationGroup = 'إدارة المحتوى';
+
+    public static function canViewAny(): bool
+    {
+        return Auth::user()->canPerform('access-admin');
+    }
+
+    public static function canCreate(): bool
+    {
+        return Auth::user()->canPerform('create-content');
+    }
+
+    public static function canEdit($record): bool
+    {
+        $user = Auth::user();
+        return $user->canEditContent($record);
+    }
+
+    public static function canDelete($record): bool
+    {
+        $user = Auth::user();
+        return $user->canDeleteContent($record);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $user = Auth::user();
+        $query = parent::getEloquentQuery();
+
+        // Content moderators can only see their own content
+        if ($user->getRole() === UserRule::CONTENT_MODERATOR) {
+            $query->where('created_by', $user->id);
+        }
+
+        return $query;
+    }
 
     public static function form(Form $form): Form
     {
@@ -45,6 +82,8 @@ class FatwaResource extends Resource
                             ->label('التصنيف')
                             ->options(Category::where('type', 'fatwa')->pluck('name_ar', 'id'))
                             ->required(),
+                        Forms\Components\Hidden::make('created_by')
+                            ->default(Auth::id()),
                     ])->columns(2),
 
                 Forms\Components\Section::make('معلومات السائل')
@@ -121,6 +160,10 @@ class FatwaResource extends Resource
                 Tables\Columns\TextColumn::make('category.name_ar')
                     ->label('التصنيف')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('createdBy.name')
+                    ->label('المؤلف')
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('questioner_name')
                     ->label('السائل')
                     ->searchable(),
