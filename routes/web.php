@@ -6,6 +6,7 @@ use App\Http\Controllers\AudioLectureController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,6 +15,19 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // About Sheikh Al-Adawi
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+// Sitemap routes
+Route::prefix('sitemap')->name('sitemap.')->group(function () {
+    Route::get('/', [SitemapController::class, 'index'])->name('index');
+    Route::get('/pages', [SitemapController::class, 'pages'])->name('pages');
+    Route::get('/fatwas', [SitemapController::class, 'fatwas'])->name('fatwas');
+    Route::get('/audio', [SitemapController::class, 'audio'])->name('audio');
+    Route::get('/books', [SitemapController::class, 'books'])->name('books');
+    Route::get('/articles', [SitemapController::class, 'articles'])->name('articles');
+});
+
+// Main sitemap.xml route
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 // Fatwas routes
 Route::prefix('fatwas')->name('fatwas.')->group(function () {

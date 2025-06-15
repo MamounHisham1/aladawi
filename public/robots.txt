@@ -1,2 +1,26 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: /sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /filament/
+Disallow: /telescope/
+Disallow: /horizon/
+Disallow: /nova/
+Disallow: /api/
+Disallow: /storage/
+Disallow: /vendor/
+
+# Allow important pages
+Allow: /fatwas/
+Allow: /audio/
+Allow: /books/
+Allow: /articles/
+Allow: /about
+Allow: /contact
+
+# Crawl delay (optional)
+Crawl-delay: 1
