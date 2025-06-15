@@ -57,6 +57,20 @@ enum UserRule: string
     case MODERATOR = 'moderator';
 
     /**
+     * CONTENT_MODERATOR - Limited content creator/editor
+     * Can only manage content they created:
+     * - Create new content (fatwas, audio, books, articles)
+     * - Edit only their own content
+     * - Delete only their own content
+     * - Cannot edit content created by others
+     * - Cannot moderate comments or user submissions
+     * - Cannot manage categories or tags
+     * - Cannot manage users
+     * - Limited access to admin panel (only their content)
+     */
+    case CONTENT_MODERATOR = 'content_moderator';
+
+    /**
      * USER - Basic user access (default role)
      * Read-only access to public content:
      * - View published fatwas, audio lectures, books, and articles
@@ -79,6 +93,7 @@ enum UserRule: string
             self::ADMIN => 'مدير',
             self::SUPER_MODERATOR => 'مشرف عام',
             self::MODERATOR => 'مشرف',
+            self::CONTENT_MODERATOR => 'مشرف محتوى',
             self::USER => 'مستخدم',
         };
     }
@@ -93,6 +108,7 @@ enum UserRule: string
             self::ADMIN => 'صلاحيات إدارية لإدارة المحتوى والمستخدمين',
             self::SUPER_MODERATOR => 'صلاحيات متقدمة لإدارة جميع أنواع المحتوى',
             self::MODERATOR => 'صلاحيات تحرير المحتوى والإشراف على التعليقات',
+            self::CONTENT_MODERATOR => 'صلاحيات إنشاء وتحرير المحتوى الخاص بهم فقط',
             self::USER => 'صلاحيات أساسية لعرض المحتوى فقط',
         };
     }
@@ -110,11 +126,11 @@ enum UserRule: string
      */
     public function canCreateContent(): bool
     {
-        return in_array($this, [self::SUPER_ADMIN, self::ADMIN, self::SUPER_MODERATOR]);
+        return in_array($this, [self::SUPER_ADMIN, self::ADMIN, self::SUPER_MODERATOR, self::CONTENT_MODERATOR]);
     }
 
     /**
-     * Check if role can edit content
+     * Check if role can edit content (any content)
      */
     public function canEditContent(): bool
     {
@@ -122,7 +138,15 @@ enum UserRule: string
     }
 
     /**
-     * Check if role can delete content
+     * Check if role can edit only their own content
+     */
+    public function canEditOwnContent(): bool
+    {
+        return in_array($this, [self::SUPER_ADMIN, self::ADMIN, self::SUPER_MODERATOR, self::MODERATOR, self::CONTENT_MODERATOR]);
+    }
+
+    /**
+     * Check if role can delete content (any content)
      */
     public function canDeleteContent(): bool
     {
@@ -130,11 +154,19 @@ enum UserRule: string
     }
 
     /**
+     * Check if role can delete only their own content
+     */
+    public function canDeleteOwnContent(): bool
+    {
+        return in_array($this, [self::SUPER_ADMIN, self::ADMIN, self::SUPER_MODERATOR, self::CONTENT_MODERATOR]);
+    }
+
+    /**
      * Check if role can access admin panel
      */
     public function canAccessAdmin(): bool
     {
-        return in_array($this, [self::SUPER_ADMIN, self::ADMIN, self::SUPER_MODERATOR, self::MODERATOR]);
+        return in_array($this, [self::SUPER_ADMIN, self::ADMIN, self::SUPER_MODERATOR, self::MODERATOR, self::CONTENT_MODERATOR]);
     }
 
     /**
@@ -146,14 +178,31 @@ enum UserRule: string
     }
 
     /**
+     * Check if role can moderate comments
+     */
+    public function canModerateComments(): bool
+    {
+        return in_array($this, [self::SUPER_ADMIN, self::ADMIN, self::SUPER_MODERATOR, self::MODERATOR]);
+    }
+
+    /**
+     * Check if role can manage categories
+     */
+    public function canManageCategories(): bool
+    {
+        return in_array($this, [self::SUPER_ADMIN, self::ADMIN, self::SUPER_MODERATOR]);
+    }
+
+    /**
      * Get all roles that can be assigned by this role
      */
     public function getAssignableRoles(): array
     {
         return match($this) {
-            self::SUPER_ADMIN => [self::ADMIN, self::SUPER_MODERATOR, self::MODERATOR, self::USER],
-            self::ADMIN => [self::SUPER_MODERATOR, self::MODERATOR, self::USER],
+            self::SUPER_ADMIN => [self::ADMIN, self::SUPER_MODERATOR, self::MODERATOR, self::CONTENT_MODERATOR, self::USER],
+            self::ADMIN => [self::SUPER_MODERATOR, self::MODERATOR, self::CONTENT_MODERATOR, self::USER],
+            self::SUPER_MODERATOR => [self::MODERATOR, self::CONTENT_MODERATOR, self::USER],
             default => [],
         };
     }
-}
+} 
