@@ -23,7 +23,7 @@ class AdminAccessMiddleware
         $user = Auth::user();
         
         if (!$user->canPerform('access-admin')) {
-            abort(403, 'ليس لديك صلاحية للوصول إلى لوحة الإدارة');
+            abort(404);
         }
 
         return $next($request);
