@@ -4,8 +4,8 @@
         <div class="bg-emerald-800 text-white py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h1 class="text-4xl font-bold mb-4">عن الشيخ العدوي</h1>
-                    <p class="text-xl text-emerald-200">نبذة عن حياة الشيخ ومسيرته العلمية</p>
+                    <h1 class="text-4xl font-bold mb-4 rtl-text">عن الشخص</h1>
+                    <p class="text-xl text-emerald-200 rtl-text">ترجمة فضيلة الشيخ أبى عبد الله مصطفى بن العدوي</p>
                 </div>
             </div>
         </div>
@@ -19,161 +19,136 @@
                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                        الشيخ الدكتور / محمد العدوي
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 rtl-text">
+                        فضيلة الشيخ أبى عبد الله مصطفى بن العدوي
                     </h2>
-                    <p class="text-lg text-gray-600 dark:text-gray-300">
+                    <p class="text-lg text-gray-600 dark:text-gray-300 rtl-text">
                         عالم وداعية إسلامي معاصر
                     </p>
                 </div>
 
-                <div class="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 leading-relaxed">
-                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">النشأة والتعليم</h3>
-                    <p class="mb-6">
-                        وُلد الشيخ العدوي ونشأ في بيئة علمية محافظة، حيث حفظ القرآن الكريم في سن مبكرة وتلقى تعليمه الأولي في الكتاتيب، 
-                        ثم التحق بالأزهر الشريف حيث تخرج من كلية أصول الدين وحصل على الدكتوراه في العقيدة والفلسفة.
-                    </p>
+                <div class="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 leading-relaxed rtl-content">
+                    <div class="space-y-6">
+                        <p class="text-lg leading-relaxed">
+                            ولد فى قرية "منية سمنود" التابعة لمحافظة الدقهلية عام 1954م، ودرس فى كلية الهندسة قسم الميكانيكا فى عام 1977م.
+                        </p>
 
-                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">المسيرة العلمية</h3>
-                    <p class="mb-6">
-                        عمل الشيخ العدوي أستاذاً في عدة جامعات إسلامية، وله إسهامات علمية كبيرة في مجال العقيدة والدعوة الإسلامية. 
-                        كما شارك في العديد من المؤتمرات العلمية المحلية والدولية وألف العديد من الكتب والمؤلفات في مختلف العلوم الشرعية.
-                    </p>
+                        <p class="text-lg leading-relaxed">
+                            حفظ كتاب الله عز وجل، رحل إلى الشيخ مقبل بن هادي الوادعي رحمه الله تعالى في اليمن، وحضر دروسه من عام 1400هـ إلى عام 1404هـ تقريباً، وحصل علماً كثيراً مع الشيخ مقبل رحمه الله رحمة واسعة.
+                        </p>
 
-                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">الأنشطة الدعوية</h3>
-                    <p class="mb-6">
-                        يُعرف الشيخ العدوي بأسلوبه المتميز في الدعوة والتعليم، حيث يجمع بين العمق العلمي والوضوح في العرض. 
-                        له برامج إذاعية وتلفزيونية متنوعة، ويشارك بانتظام في المحاضرات والندوات الدينية في مختلف البلدان العربية والإسلامية.
+                        <p class="text-lg leading-relaxed">
+                            رجع إلى مصر، وأنشأ مسجداً صغيراً وبدأ فيه التدريس، بدأ دروسه فى البخارى ومسلم وفى التفسير والفقه، رحل إليه عدد كبير من الطلبة من داخل مصر وخارجها، وبدأ فى إنشاء مسجد كبير ومكتبة كبيرة، بعد ازدياد عدد الطلاب.
+                        </p>
+
+                        <p class="text-lg leading-relaxed">
+                            له عدد من الدروس الأسبوعية في مختلف محافظات مصر.
+                        </p>
+
+                        <p class="text-lg leading-relaxed">
+                            كتب فى عدة اتجاهات منها (فقه - حديث - مصطلح حديث - التفسير).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major Works Section -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-12">
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 rtl-text">مشاريع التفسير</h3>
+                <div class="space-y-4 rtl-content">
+                    <p class="text-lg leading-relaxed">
+                        له مشروع كبير في التفسير على صورة سؤال وجواب واسم هذا المشروع: <strong>(التسهيل لتأويل التنزيل)</strong> وقد صدر منه حوالى أربعة عشر مجلدا منها (الفاتحة - البقرة - آل عمران – النساء – المائدة - يوسف - النور – القصص – الحجرات – جزء قد سمع - جزء تبارك - جزء عم ).
+                    </p>
+                    
+                    <p class="text-lg leading-relaxed">
+                        ولهذا العمل مختصر فى ثلاث مجلدات صدر منه جزء يحتوى تفسير جزء عم واسمه <strong>(تفسير الربانيين لعموم المؤمنيين)</strong>.
+                    </p>
+                    
+                    <p class="text-lg leading-relaxed">
+                        ثم لهذا التفسير المختصر اختصارا آخر اسمه <strong>(تسهيل التسهيل)</strong> وهو تفسير للقرآن فى جزء واحد.
+                    </p>
+                    
+                    <p class="text-lg leading-relaxed">
+                        ثم مشروع آخر رابع يحتوى معانى المفردات مع الثوابت من تفسيرات الرسول صلى الله عليه وسلم لبعض الآيات مع أسباب النـزول.
                     </p>
                 </div>
             </div>
 
-            <!-- Achievements Section -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-                        <svg class="w-6 h-6 text-emerald-600 ml-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
-                        </svg>
-                        المؤلفات والكتب
-                    </h3>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                        <li>• أصول العقيدة الإسلامية</li>
-                        <li>• منهج الدعوة في القرآن والسنة</li>
-                        <li>• شرح أسماء الله الحسنى</li>
-                        <li>• فقه المعاملات المعاصرة</li>
-                        <li>• الرد على الشبهات العصرية</li>
-                    </ul>
-                </div>
-
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-                        <svg class="w-6 h-6 text-emerald-600 ml-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                        </svg>
-                        الجوائز والتكريمات
-                    </h3>
-                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                        <li>• جائزة الملك فيصل للعلوم الإسلامية</li>
-                        <li>• وسام التميز الأكاديمي</li>
-                        <li>• شهادة تقدير من رابطة العالم الإسلامي</li>
-                        <li>• درع الإنجاز في الدعوة الإسلامية</li>
-                        <li>• عضوية المجامع الفقهية الدولية</li>
-                    </ul>
+            <!-- Fiqh Works Section -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-12">
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 rtl-text">مؤلفات الفقه</h3>
+                <div class="space-y-4 rtl-content">
+                    <p class="text-lg leading-relaxed">
+                        وأما بالنسبة للفقه فله كتاب <strong>"الجامع لأحكام النساء"</strong> فى خمس مجلدات أربعة مجلدات للشرح والخامس أسئلة تطبيقية على الأربع مجلدات فى المسائل المحتواة، وله كتاب آخر فى الفقه بصفة عامة وهو كتاب اسمه <strong>(الجامع العام فى الفقه والأحكام)</strong>.
+                    </p>
                 </div>
             </div>
 
-            <!-- Timeline Section -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
-                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center">
-                    المسيرة الزمنية
-                </h3>
-                <div class="space-y-8">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 w-24 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                            1970م
-                        </div>
-                        <div class="flex-grow text-gray-700 dark:text-gray-300">
-                            <h4 class="font-semibold mb-1">بداية المسيرة التعليمية</h4>
-                            <p>التحق بالأزهر الشريف لدراسة العلوم الشرعية</p>
-                        </div>
+            <!-- Other Works Section -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-12">
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 rtl-text">المؤلفات الأخرى</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 rtl-text">الكتب الكبيرة:</h4>
+                        <ul class="space-y-2 text-gray-700 dark:text-gray-300 rtl-content">
+                            <li>• الصحيح المسند من أحاديث الفتن والملاحم وأشراط الساعة</li>
+                            <li>• الصحيح المسند من أذكار اليوم والليلة</li>
+                            <li>• الصحيح المسند من فضائل الصحابة</li>
+                            <li>• الصحيح المسند من الأحاديث القدسية</li>
+                            <li>• فقه التعامل مع الوالدين</li>
+                            <li>• فقه التعامل بين الزوجين</li>
+                            <li>• فقه تربية الأبناء</li>
+                            <li>• فقه الأخلاق والمعاملات مع المؤمنين</li>
+                            <li>• أسئلة وأجوبة فى علم مصطلح الحديث مع شرح علل الحديث</li>
+                            <li>• مفاتيح الفقه فى الدين</li>
+                            <li>• شفاء القلوب</li>
+                            <li>• فقه الدعاء</li>
+                        </ul>
                     </div>
                     
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 w-24 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                            1975م
-                        </div>
-                        <div class="flex-grow text-gray-700 dark:text-gray-300">
-                            <h4 class="font-semibold mb-1">التخرج والماجستير</h4>
-                            <p>حصل على درجة الماجستير في أصول الدين</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 w-24 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                            1980م
-                        </div>
-                        <div class="flex-grow text-gray-700 dark:text-gray-300">
-                            <h4 class="font-semibold mb-1">الدكتوراه</h4>
-                            <p>حصل على درجة الدكتوراه في العقيدة والفلسفة بتقدير ممتاز</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 w-24 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                            1985م
-                        </div>
-                        <div class="flex-grow text-gray-700 dark:text-gray-300">
-                            <h4 class="font-semibold mb-1">بداية التدريس الجامعي</h4>
-                            <p>انضم إلى هيئة التدريس بكلية أصول الدين</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 w-24 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                            1995م
-                        </div>
-                        <div class="flex-grow text-gray-700 dark:text-gray-300">
-                            <h4 class="font-semibold mb-1">الأستاذية</h4>
-                            <p>حصل على درجة الأستاذية وتولى رئاسة قسم العقيدة</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 w-24 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                            2000م
-                        </div>
-                        <div class="flex-grow text-gray-700 dark:text-gray-300">
-                            <h4 class="font-semibold mb-1">الانطلاق الإعلامي</h4>
-                            <p>بدأ المشاركة في البرامج الإذاعية والتلفزيونية</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 w-24 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                            2010م
-                        </div>
-                        <div class="flex-grow text-gray-700 dark:text-gray-300">
-                            <h4 class="font-semibold mb-1">إطلاق الموقع الإلكتروني</h4>
-                            <p>تدشين موقع al-adawi.net لنشر العلم والفتاوى</p>
-                        </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 rtl-text">المختصرات الصغيرة:</h4>
+                        <ul class="space-y-2 text-gray-700 dark:text-gray-300 rtl-content">
+                            <li>• القبس المختار من صحيح الأذكار</li>
+                            <li>• روضة المحبين من فضائل صحابة النبى الأمين</li>
+                            <li>• فضائل القرآن وآداب حملته</li>
+                            <li>• معجزات النبى</li>
+                            <li>• ولاتقربوا الزنا</li>
+                            <li>• ذم البخل</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Contact Information -->
-            <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-6 mt-12 text-center">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    تواصل مع الشيخ
+            <!-- Verifications Section -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-12">
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 rtl-text">التحقيقات</h3>
+                <div class="rtl-content">
+                    <p class="text-lg leading-relaxed mb-4">
+                        وله عدد من التحقيقات منها:
+                    </p>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li>• المنتخب لعبد ابن حميد</li>
+                        <li>• الفرقان بين أولياء الرحمن وأولياء الشيطان</li>
+                        <li>• الوابل الصيب من الكلم الطيب</li>
+                        <li>• تحقيق شرح الطحاوية</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Current Status -->
+            <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-8 text-center">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 rtl-text">
+                    الوضع الحالي
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-4">
-                    يمكنكم التواصل مع الشيخ العدوي من خلال الطرق التالية:
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 rtl-content leading-relaxed">
+                    ولا زال الشيخ مشمرًا في الدعوة إلى الله ونشر العلم والتأليف، نسأل الله عز وجل أن يبارك في علمه وعمله.
                 </p>
                 <Link 
                     :href="route('contact.index')" 
-                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 transition"
+                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 transition rtl-text"
                 >
-                    إرسال سؤال أو استفسار
+                    تواصل مع الشيخ
                 </Link>
             </div>
         </div>
