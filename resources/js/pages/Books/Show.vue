@@ -33,7 +33,7 @@ const breadcrumbs = [
                                 <strong>المؤلف:</strong> {{ book.author_name }}
                             </div>
                             <div class="text-gray-600 dark:text-gray-400">
-                                <strong>التصنيف:</strong> {{ book.category.name_ar }}
+                                <strong>التصنيف:</strong> {{ book.category?.name_ar || 'غير محدد' }}
                             </div>
                             <div v-if="book.published_at" class="text-gray-600 dark:text-gray-400">
                                 <strong>تاريخ النشر:</strong> {{ new Date(book.published_at).toLocaleDateString('ar-SA') }}

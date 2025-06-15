@@ -56,7 +56,7 @@ const formatDate = (date: string) => {
                 <!-- Article Header -->
                 <div class="mb-8">
                     <div class="flex items-center gap-2 mb-4">
-                        <Badge variant="outline">{{ article.category.name_ar }}</Badge>
+                        <Badge variant="outline">{{ article.category?.name_ar || 'غير محدد' }}</Badge>
                         <Badge v-if="article.is_featured" variant="secondary">مميز</Badge>
                     </div>
                     
@@ -112,7 +112,7 @@ const formatDate = (date: string) => {
                         <Card v-for="relatedArticle in relatedArticles" :key="relatedArticle.id" class="hover:shadow-lg transition-shadow">
                             <CardHeader>
                                 <Badge variant="outline" class="w-fit mb-2">
-                                    {{ relatedArticle.category.name_ar }}
+                                    {{ relatedArticle.category?.name_ar || 'غير محدد' }}
                                 </Badge>
                                 <CardTitle class="text-lg leading-tight">
                                     <Link :href="`/articles/${relatedArticle.slug}`" class="hover:text-primary">

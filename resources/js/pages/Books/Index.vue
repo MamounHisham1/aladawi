@@ -32,7 +32,7 @@ const breadcrumbs = [
                         {{ book.description_ar }}
                     </p>
                     <div class="text-sm text-gray-500">
-                        <span>{{ book.category.name_ar }}</span>
+                        <span>{{ book.category?.name_ar || 'غير محدد' }}</span>
                     </div>
                 </div>
             </div>

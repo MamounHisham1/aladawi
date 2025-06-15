@@ -23,7 +23,7 @@ const breadcrumbs = [
                 
                 <div class="mb-6 space-y-2">
                     <div class="text-gray-600 dark:text-gray-400">
-                        <strong>التصنيف:</strong> {{ audioLecture.category.name_ar }}
+                        <strong>التصنيف:</strong> {{ audioLecture.category?.name_ar || 'غير محدد' }}
                     </div>
                     <div v-if="audioLecture.audio_series" class="text-gray-600 dark:text-gray-400">
                         <strong>السلسلة:</strong> {{ audioLecture.audio_series.title_ar }}

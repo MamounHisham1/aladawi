@@ -141,7 +141,7 @@ const formatDate = (date: string) => {
                                 مميز
                             </Badge>
                             <Badge variant="outline">
-                                {{ article.category.name_ar }}
+                                {{ article.category?.name_ar || 'غير محدد' }}
                             </Badge>
                         </div>
                         <CardTitle class="text-lg leading-tight">

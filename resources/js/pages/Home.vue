@@ -48,7 +48,7 @@
                     >
                         <div class="flex items-start justify-between mb-3">
                             <span class="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs px-2 py-1 rounded-full">
-                                {{ fatwa.category.name_ar }}
+                                {{ fatwa.category?.name_ar || 'غير محدد' }}
                             </span>
                             <span class="text-sm text-gray-500 dark:text-gray-400">
                                 {{ formatDate(fatwa.fatwa_date) }}
@@ -100,7 +100,7 @@
                     >
                         <div class="flex items-start justify-between mb-3">
                             <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">
-                                {{ lecture.category.name_ar }}
+                                {{ lecture.category?.name_ar || 'غير محدد' }}
                             </span>
                             <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                                 <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
@@ -160,7 +160,7 @@
                     >
                         <div class="flex items-start justify-between mb-3">
                             <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs px-2 py-1 rounded-full">
-                                {{ book.category.name_ar }}
+                                {{ book.category?.name_ar || 'غير محدد' }}
                             </span>
                             <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                                 <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
@@ -223,7 +223,7 @@
                     >
                         <div class="flex items-start justify-between mb-3">
                             <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 text-xs px-2 py-1 rounded-full">
-                                {{ article.category.name_ar }}
+                                {{ article.category?.name_ar || 'غير محدد' }}
                             </span>
                             <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                                 <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">

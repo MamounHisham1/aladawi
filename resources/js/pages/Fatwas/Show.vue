@@ -36,9 +36,9 @@ const getYouTubeEmbedUrl = (url: string) => {
                 <h1 class="text-4xl font-bold mb-6">{{ fatwa.question_ar }}</h1>
                 
                 <div class="mb-6 text-gray-600 dark:text-gray-400">
-                    <span>{{ fatwa.category.name_ar }}</span>
+                    <span>{{ fatwa.category?.name_ar || 'غير محدد' }}</span>
                     <span class="mx-2">•</span>
-                    <span>{{ new Date(fatwa.published_at).toLocaleDateString('ar-SA') }}</span>
+                    <span>{{ new Date(fatwa.fatwa_date).toLocaleDateString('ar-SA') }}</span>
                 </div>
                 
                 <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-8">
@@ -93,7 +93,7 @@ const getYouTubeEmbedUrl = (url: string) => {
                                 </Link>
                             </h3>
                             <div class="text-sm text-gray-500">
-                                {{ related.category.name_ar }}
+                                {{ related.category?.name_ar || 'غير محدد' }}
                             </div>
                         </div>
                     </div>

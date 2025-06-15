@@ -66,7 +66,8 @@ class FatwaController extends Controller
         $fatwa->load('category');
 
         // Get related fatwas
-        $relatedFatwas = Fatwa::where('category_id', $fatwa->category_id)
+        $relatedFatwas = Fatwa::with('category')
+            ->where('category_id', $fatwa->category_id)
             ->where('id', '!=', $fatwa->id)
             ->published()
             ->take(3)

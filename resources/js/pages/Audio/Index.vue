@@ -40,7 +40,7 @@ const breadcrumbs = [
                     </p>
                     
                     <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                        <span>{{ lecture.category.name_ar }}</span>
+                        <span>{{ lecture.category?.name_ar || 'غير محدد' }}</span>
                         <span v-if="lecture.duration">{{ Math.floor(lecture.duration / 60) }} دقيقة</span>
                     </div>
                     

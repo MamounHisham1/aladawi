@@ -85,7 +85,7 @@
                 >
                     <div class="flex items-start justify-between mb-3">
                         <span class="bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs px-2 py-1 rounded-full">
-                            {{ fatwa.category.name_ar }}
+                            {{ fatwa.category?.name_ar || 'غير محدد' }}
                         </span>
                         <span class="text-sm text-gray-500 dark:text-gray-400">
                             {{ formatDate(fatwa.fatwa_date) }}
