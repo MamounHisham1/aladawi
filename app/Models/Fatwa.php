@@ -31,7 +31,7 @@ class Fatwa extends Model
         'meta_title',
         'meta_description',
         'youtube_link',
-        'created_by'
+        'created_by',
     ];
 
     protected $casts = [

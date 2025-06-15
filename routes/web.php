@@ -1,14 +1,13 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\FatwaController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AudioLectureController;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FatwaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 // Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');

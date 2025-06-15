@@ -38,7 +38,7 @@ class Book extends Model implements HasMedia
         'is_published',
         'meta_title',
         'meta_description',
-        'created_by'
+        'created_by',
     ];
 
     protected $casts = [
@@ -64,7 +64,7 @@ class Book extends Model implements HasMedia
             ->acceptsMimeTypes(['image/jpeg', 'image/png']);
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')
             ->width(300)

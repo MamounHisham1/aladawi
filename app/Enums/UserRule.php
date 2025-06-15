@@ -88,7 +88,7 @@ enum UserRule: string
      */
     public function getDisplayName(): string
     {
-        return match($this) {
+        return match ($this) {
             self::SUPER_ADMIN => 'مدير عام',
             self::ADMIN => 'مدير',
             self::SUPER_MODERATOR => 'مشرف عام',
@@ -103,7 +103,7 @@ enum UserRule: string
      */
     public function getDescription(): string
     {
-        return match($this) {
+        return match ($this) {
             self::SUPER_ADMIN => 'صلاحيات كاملة لإدارة النظام والمحتوى والمستخدمين',
             self::ADMIN => 'صلاحيات إدارية لإدارة المحتوى والمستخدمين',
             self::SUPER_MODERATOR => 'صلاحيات متقدمة لإدارة جميع أنواع المحتوى',
@@ -198,11 +198,11 @@ enum UserRule: string
      */
     public function getAssignableRoles(): array
     {
-        return match($this) {
+        return match ($this) {
             self::SUPER_ADMIN => [self::ADMIN, self::SUPER_MODERATOR, self::MODERATOR, self::CONTENT_MODERATOR, self::USER],
             self::ADMIN => [self::SUPER_MODERATOR, self::MODERATOR, self::CONTENT_MODERATOR, self::USER],
             self::SUPER_MODERATOR => [self::MODERATOR, self::CONTENT_MODERATOR, self::USER],
             default => [],
         };
     }
-} 
+}

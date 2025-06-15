@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactResource\Pages;
-use App\Filament\Resources\ContactResource\RelationManagers;
 use App\Models\Contact;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactResource extends Resource
 {
@@ -28,26 +25,32 @@ class ContactResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('معلومات المرسل')
+                    ->description('معلومات الشخص الذي أرسل الرسالة')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('الاسم')
+                            ->helperText('اسم المرسل (مطلوب)')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('email')
                             ->label('البريد الإلكتروني')
+                            ->helperText('عنوان البريد الإلكتروني للمرسل (مطلوب)')
                             ->email()
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('phone')
                             ->label('رقم الهاتف')
+                            ->helperText('رقم هاتف المرسل (اختياري)')
                             ->tel()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('subject')
                             ->label('الموضوع')
+                            ->helperText('موضوع الرسالة (مطلوب)')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\Select::make('type')
                             ->label('نوع الرسالة')
+                            ->helperText('اختر نوع الرسالة المناسب')
                             ->options([
                                 'general' => 'عام',
                                 'complaint' => 'شكوى',
@@ -59,26 +62,33 @@ class ContactResource extends Resource
                     ])->columns(2),
 
                 Forms\Components\Section::make('محتوى الرسالة')
+                    ->description('نص الرسالة المرسلة من المستخدم')
                     ->schema([
                         Forms\Components\Textarea::make('message')
                             ->label('الرسالة')
+                            ->helperText('نص الرسالة كاملاً (مطلوب)')
                             ->required()
                             ->rows(5),
                     ]),
 
                 Forms\Components\Section::make('الرد الإداري')
+                    ->description('رد الإدارة على الرسالة وحالة المعالجة')
                     ->schema([
                         Forms\Components\Textarea::make('admin_reply')
                             ->label('رد الإدارة')
+                            ->helperText('اكتب رد الإدارة على الرسالة (اختياري)')
                             ->rows(4),
                         Forms\Components\Toggle::make('is_read')
                             ->label('تم القراءة')
+                            ->helperText('هل تم قراءة هذه الرسالة؟')
                             ->default(false),
                         Forms\Components\Toggle::make('is_replied')
                             ->label('تم الرد')
+                            ->helperText('هل تم الرد على هذه الرسالة؟')
                             ->default(false),
                         Forms\Components\DateTimePicker::make('replied_at')
-                            ->label('تاريخ الرد'),
+                            ->label('تاريخ الرد')
+                            ->helperText('التاريخ والوقت الذي تم فيه الرد على الرسالة'),
                     ])->columns(2),
             ]);
     }
@@ -145,7 +155,7 @@ class ContactResource extends Resource
                     ->label('تحديد كمقروءة')
                     ->icon('heroicon-o-eye')
                     ->action(fn (Contact $record) => $record->markAsRead())
-                    ->visible(fn (Contact $record) => !$record->is_read),
+                    ->visible(fn (Contact $record) => ! $record->is_read),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

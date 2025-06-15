@@ -14,17 +14,17 @@ class EditAudioLecture extends EditRecord
     protected function getHeaderActions(): array
     {
         $actions = [];
-        
+
         if (Auth::user()->canDeleteContent($this->record)) {
             $actions[] = Actions\DeleteAction::make();
         }
-        
+
         return $actions;
     }
 
     protected function authorizeAccess(): void
     {
-        if (!Auth::user()->canEditContent($this->record)) {
+        if (! Auth::user()->canEditContent($this->record)) {
             abort(403, 'ليس لديك صلاحية لتعديل هذا المحتوى');
         }
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fatwa;
 use App\Models\Category;
+use App\Models\Fatwa;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,11 +19,11 @@ class FatwaController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('title_ar', 'like', "%{$search}%")
-                  ->orWhere('title_en', 'like', "%{$search}%")
-                  ->orWhere('question_ar', 'like', "%{$search}%")
-                  ->orWhere('question_en', 'like', "%{$search}%")
-                  ->orWhere('answer_ar', 'like', "%{$search}%")
-                  ->orWhere('answer_en', 'like', "%{$search}%");
+                    ->orWhere('title_en', 'like', "%{$search}%")
+                    ->orWhere('question_ar', 'like', "%{$search}%")
+                    ->orWhere('question_en', 'like', "%{$search}%")
+                    ->orWhere('answer_ar', 'like', "%{$search}%")
+                    ->orWhere('answer_en', 'like', "%{$search}%");
             });
         }
 

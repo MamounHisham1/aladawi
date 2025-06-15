@@ -20,9 +20,9 @@ class AudioLectureController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('title_ar', 'like', "%{$search}%")
-                  ->orWhere('title_en', 'like', "%{$search}%")
-                  ->orWhere('description_ar', 'like', "%{$search}%")
-                  ->orWhere('description_en', 'like', "%{$search}%");
+                    ->orWhere('title_en', 'like', "%{$search}%")
+                    ->orWhere('description_ar', 'like', "%{$search}%")
+                    ->orWhere('description_en', 'like', "%{$search}%");
             });
         }
 
@@ -88,9 +88,9 @@ class AudioLectureController extends Controller
         $series = AudioSeries::with(['audioLectures' => function ($query) {
             $query->published()->orderBy('sort_order');
         }])
-        ->active()
-        ->orderBy('sort_order')
-        ->paginate(12);
+            ->active()
+            ->orderBy('sort_order')
+            ->paginate(12);
 
         return Inertia::render('Audio/Series', [
             'series' => $series,

@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CategoryResource extends Resource
 {
@@ -27,36 +24,52 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name_ar')
-                    ->label('الاسم بالعربية')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('name_en')
-                    ->label('الاسم بالإنجليزية')
-                    ->maxLength(255),
-                Forms\Components\Select::make('type')
-                    ->label('النوع')
-                    ->options([
-                        'general' => 'عام',
-                        'fatwa' => 'فتاوى',
-                        'audio' => 'صوتيات',
-                        'book' => 'كتب',
-                        'article' => 'مقالات',
-                    ])
-                    ->required(),
-                Forms\Components\Textarea::make('description_ar')
-                    ->label('الوصف بالعربية')
-                    ->rows(3),
-                Forms\Components\Textarea::make('description_en')
-                    ->label('الوصف بالإنجليزية')
-                    ->rows(3),
-                Forms\Components\TextInput::make('sort_order')
-                    ->label('ترتيب العرض')
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\Toggle::make('is_active')
-                    ->label('نشط')
-                    ->default(true),
+                Forms\Components\Section::make('معلومات التصنيف')
+                    ->description('أدخل معلومات التصنيف الجديد - التصنيفات تساعد في تنظيم المحتوى')
+                    ->schema([
+                        Forms\Components\TextInput::make('name_ar')
+                            ->label('الاسم بالعربية')
+                            ->helperText('اسم التصنيف باللغة العربية (مطلوب)')
+                            ->placeholder('مثال: الفقه، العقيدة، السيرة')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('name_en')
+                            ->label('الاسم بالإنجليزية')
+                            ->helperText('اسم التصنيف باللغة الإنجليزية (اختياري)')
+                            ->placeholder('Example: Fiqh, Aqeedah, Biography')
+                            ->maxLength(255),
+                        Forms\Components\Select::make('type')
+                            ->label('النوع')
+                            ->helperText('نوع المحتوى الذي سيندرج تحت هذا التصنيف (مطلوب)')
+                            ->options([
+                                'general' => 'عام',
+                                'fatwa' => 'فتاوى',
+                                'audio' => 'صوتيات',
+                                'book' => 'كتب',
+                                'article' => 'مقالات',
+                            ])
+                            ->required(),
+                        Forms\Components\Textarea::make('description_ar')
+                            ->label('الوصف بالعربية')
+                            ->helperText('وصف مختصر للتصنيف باللغة العربية (اختياري)')
+                            ->placeholder('وصف ما يحتويه هذا التصنيف...')
+                            ->rows(3),
+                        Forms\Components\Textarea::make('description_en')
+                            ->label('الوصف بالإنجليزية')
+                            ->helperText('وصف مختصر للتصنيف باللغة الإنجليزية (اختياري)')
+                            ->placeholder('Description of what this category contains...')
+                            ->rows(3),
+                        Forms\Components\TextInput::make('sort_order')
+                            ->label('ترتيب العرض')
+                            ->helperText('رقم لترتيب التصنيفات (الأرقام الأصغر تظهر أولاً)')
+                            ->placeholder('0')
+                            ->numeric()
+                            ->default(0),
+                        Forms\Components\Toggle::make('is_active')
+                            ->label('نشط')
+                            ->helperText('هل تريد تفعيل هذا التصنيف ليظهر في الموقع؟')
+                            ->default(true),
+                    ])->columns(2),
             ]);
     }
 

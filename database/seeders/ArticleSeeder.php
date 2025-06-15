@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class ArticleSeeder extends Seeder
 {
@@ -13,7 +12,7 @@ class ArticleSeeder extends Seeder
     {
         $articleCategory = Category::where('type', 'article')->first();
         $generalCategory = Category::where('type', 'general')->first();
-        
+
         $categoryId = $articleCategory ? $articleCategory->id : ($generalCategory ? $generalCategory->id : 1);
 
         $articles = [
@@ -390,4 +389,4 @@ class ArticleSeeder extends Seeder
             Article::create($articleData);
         }
     }
-} 
+}

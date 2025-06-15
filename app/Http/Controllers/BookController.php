@@ -6,7 +6,6 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class BookController extends Controller
 {
@@ -20,11 +19,11 @@ class BookController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('title_ar', 'like', "%{$search}%")
-                  ->orWhere('title_en', 'like', "%{$search}%")
-                  ->orWhere('description_ar', 'like', "%{$search}%")
-                  ->orWhere('description_en', 'like', "%{$search}%")
-                  ->orWhere('author_ar', 'like', "%{$search}%")
-                  ->orWhere('author_en', 'like', "%{$search}%");
+                    ->orWhere('title_en', 'like', "%{$search}%")
+                    ->orWhere('description_ar', 'like', "%{$search}%")
+                    ->orWhere('description_en', 'like', "%{$search}%")
+                    ->orWhere('author_ar', 'like', "%{$search}%")
+                    ->orWhere('author_en', 'like', "%{$search}%");
             });
         }
 
@@ -78,8 +77,8 @@ class BookController extends Controller
     public function download(Book $book, $mediaId)
     {
         $media = $book->getMedia('book_files')->find($mediaId);
-        
-        if (!$media) {
+
+        if (! $media) {
             abort(404);
         }
 

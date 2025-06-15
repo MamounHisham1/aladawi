@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fatwa;
+use App\Models\Article;
 use App\Models\AudioLecture;
 use App\Models\Book;
-use App\Models\Article;
-use Illuminate\Http\Request;
+use App\Models\Fatwa;
 use Inertia\Inertia;
 
 class HomeController extends Controller

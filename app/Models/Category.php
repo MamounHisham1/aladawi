@@ -19,7 +19,7 @@ class Category extends Model
         'description_en',
         'sort_order',
         'is_active',
-        'type'
+        'type',
     ];
 
     protected $casts = [

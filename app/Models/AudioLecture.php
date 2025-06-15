@@ -34,7 +34,7 @@ class AudioLecture extends Model implements HasMedia
         'is_published',
         'meta_title',
         'meta_description',
-        'created_by'
+        'created_by',
     ];
 
     protected $casts = [
@@ -58,7 +58,7 @@ class AudioLecture extends Model implements HasMedia
             ->acceptsMimeTypes(['audio/mpeg', 'audio/mp3', 'audio/wav']);
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         // Audio conversions can be added here if needed
     }

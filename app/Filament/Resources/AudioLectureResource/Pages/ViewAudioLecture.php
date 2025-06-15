@@ -16,4 +16,4 @@ class ViewAudioLecture extends ViewRecord
             Actions\EditAction::make(),
         ];
     }
-} 
+}

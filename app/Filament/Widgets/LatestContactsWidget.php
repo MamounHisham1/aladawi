@@ -11,7 +11,7 @@ class LatestContactsWidget extends BaseWidget
 {
     protected static ?string $heading = 'أحدث رسائل التواصل';
 
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     public function table(Table $table): Table
     {
@@ -53,4 +53,4 @@ class LatestContactsWidget extends BaseWidget
                     ->url(fn (Contact $record): string => route('filament.admin.resources.contacts.view', $record)),
             ]);
     }
-} 
+}

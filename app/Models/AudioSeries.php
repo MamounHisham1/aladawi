@@ -18,7 +18,7 @@ class AudioSeries extends Model
         'description_ar',
         'description_en',
         'sort_order',
-        'is_active'
+        'is_active',
     ];
 
     protected $casts = [

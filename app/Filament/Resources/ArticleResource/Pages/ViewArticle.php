@@ -16,4 +16,4 @@ class ViewArticle extends ViewRecord
             Actions\EditAction::make(),
         ];
     }
-} 
+}

@@ -3,20 +3,19 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Article;
-use App\Models\Book;
 use App\Models\AudioLecture;
+use App\Models\Book;
 use App\Models\Fatwa;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 class RecentContentWidget extends BaseWidget
 {
     protected static ?string $heading = 'المحتوى المضاف حديثاً';
 
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     public function table(Table $table): Table
     {
@@ -69,10 +68,11 @@ class RecentContentWidget extends BaseWidget
                             'audio-lectures' => 'audio-lectures',
                             'fatwas' => 'fatwas',
                         ];
-                        
+
                         $resource = $resourceMap[$record->resource] ?? 'articles';
+
                         return route("filament.admin.resources.{$resource}.view", $record->id);
                     }),
             ]);
     }
-} 
+}

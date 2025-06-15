@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 
-const props = defineProps<{
+defineProps<{
     audioLectures: any;
     audioSeries: any;
     categories: any;

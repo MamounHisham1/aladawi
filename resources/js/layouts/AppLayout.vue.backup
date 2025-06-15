@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { Link, usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
-
-const page = usePage()
-const user = computed(() => page.props.auth?.user)
-
+import { Link } from '@inertiajs/vue3'
 
 const mobileMenuOpen = ref(false)
 const isDarkMode = ref(false)
@@ -23,17 +18,14 @@ const toggleDarkMode = () => {
 
 onMounted(() => {
     const savedDarkMode = localStorage.getItem('darkMode')
-    if (savedDarkMode !== null) {
+    if (savedDarkMode) {
         isDarkMode.value = savedDarkMode === 'true'
     } else {
         isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
     }
     
-    // Apply the dark class immediately on mount
     if (isDarkMode.value) {
         document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
     }
 })
 </script>
@@ -104,48 +96,11 @@ onMounted(() => {
                         </Link>
                     </nav>
 
-                    <!-- User Menu & Dark Mode Toggle -->
+                    <!-- Dark Mode Toggle -->
                     <div class="flex items-center space-x-4 rtl:space-x-reverse">
-                        <!-- Authentication Links -->
-                        <div v-if="!user" class="hidden md:flex items-center space-x-4 rtl:space-x-reverse">
-                            <Link 
-                                :href="route('login')" 
-                                class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
-                            >
-                                تسجيل الدخول
-                            </Link>
-                            <Link 
-                                :href="route('register')" 
-                                class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
-                            >
-                                إنشاء حساب
-                            </Link>
-                        </div>
-
-                        <!-- User Menu (when logged in) -->
-                        <div v-else class="hidden md:flex items-center space-x-4 rtl:space-x-reverse">
-                            <span class="text-white text-sm rtl-text">مرحباً، {{ user.name }}</span>
-                            <Link 
-                                :href="route('settings.profile')" 
-                                class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
-                            >
-                                الملف الشخصي
-                            </Link>
-                            <Link 
-                                :href="route('logout')" 
-                                method="post"
-                                as="button"
-                                class="text-white hover:text-emerald-200 px-3 py-2 rounded-md text-sm font-medium transition-colors rtl-text"
-                            >
-                                تسجيل الخروج
-                            </Link>
-                        </div>
-
-                        <!-- Dark Mode Toggle -->
                         <button 
                             @click="toggleDarkMode"
                             class="text-white hover:text-emerald-200 p-2 rounded-md"
-                            title="تبديل الوضع المظلم"
                         >
                             <svg v-if="!isDarkMode" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
@@ -219,43 +174,6 @@ onMounted(() => {
                         >
                             اتصل بنا
                         </Link>
-
-                        <!-- Mobile Authentication Links -->
-                        <div v-if="!user" class="border-t border-emerald-700 pt-4 mt-4">
-                            <Link 
-                                :href="route('login')" 
-                                class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
-                            >
-                                تسجيل الدخول
-                            </Link>
-                            <Link 
-                                :href="route('register')" 
-                                class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
-                            >
-                                إنشاء حساب
-                            </Link>
-                        </div>
-
-                        <!-- Mobile User Menu (when logged in) -->
-                        <div v-else class="border-t border-emerald-700 pt-4 mt-4">
-                            <div class="text-white px-3 py-2 text-base font-medium rtl-text">
-                                مرحباً، {{ user.name }}
-                            </div>
-                            <Link 
-                                :href="route('settings.profile')" 
-                                class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
-                            >
-                                الملف الشخصي
-                            </Link>
-                            <Link 
-                                :href="route('logout')" 
-                                method="post"
-                                as="button"
-                                class="text-white hover:text-emerald-200 block px-3 py-2 rounded-md text-base font-medium transition-colors rtl-text"
-                            >
-                                تسجيل الخروج
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -287,10 +205,9 @@ onMounted(() => {
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold mb-4 rtl-text">تواصل معنا</h3>
-                        <ul class="space-y-2">
-                            <li><Link :href="route('contact.index')" class="text-gray-300 hover:text-white rtl-text">اتصل بنا</Link></li>
-                            <li><Link :href="route('about')" class="text-gray-300 hover:text-white rtl-text">عن الشيخ</Link></li>
-                        </ul>
+                        <p class="text-gray-300 mb-2">
+                            <Link :href="route('contact.index')" class="hover:text-white rtl-text">إرسال رسالة</Link>
+                        </p>
                     </div>
                 </div>
                 <div class="border-t border-gray-700 mt-8 pt-8 text-center">

@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AudioSeriesResource\Pages;
-use App\Filament\Resources\AudioSeriesResource\RelationManagers;
 use App\Models\AudioSeries;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AudioSeriesResource extends Resource
 {
@@ -28,37 +25,51 @@ class AudioSeriesResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('المعلومات الأساسية')
+                    ->description('أدخل معلومات السلسلة الصوتية الجديدة')
                     ->schema([
                         Forms\Components\TextInput::make('name_ar')
                             ->label('الاسم بالعربية')
+                            ->helperText('اكتب اسم السلسلة الصوتية باللغة العربية (مطلوب)')
+                            ->placeholder('مثال: شرح كتاب التوحيد')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('name_en')
                             ->label('الاسم بالإنجليزية')
+                            ->helperText('اكتب اسم السلسلة الصوتية باللغة الإنجليزية (اختياري)')
+                            ->placeholder('Example: Explanation of Kitab At-Tawheed')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('slug')
                             ->label('الرابط المختصر')
+                            ->helperText('رابط مختصر للسلسلة (سيتم إنشاؤه تلقائياً إذا تُرك فارغاً)')
+                            ->placeholder('explanation-kitab-tawheed')
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
                     ])->columns(2),
 
                 Forms\Components\Section::make('الوصف')
+                    ->description('وصف السلسلة الصوتية ومحتواها - يمكن استخدام التنسيق المتقدم')
                     ->schema([
                         Forms\Components\MarkdownEditor::make('description_ar')
                             ->label('الوصف بالعربية')
+                            ->helperText('وصف مفصل للسلسلة الصوتية ومحتواها باللغة العربية (مطلوب)')
                             ->required(),
                         Forms\Components\MarkdownEditor::make('description_en')
-                            ->label('الوصف بالإنجليزية'),
+                            ->label('الوصف بالإنجليزية')
+                            ->helperText('وصف مفصل للسلسلة الصوتية باللغة الإنجليزية (اختياري)'),
                     ]),
 
                 Forms\Components\Section::make('الإعدادات')
+                    ->description('إعدادات العرض والتفعيل')
                     ->schema([
                         Forms\Components\TextInput::make('sort_order')
                             ->label('ترتيب العرض')
+                            ->helperText('رقم لترتيب السلاسل الصوتية (الأرقام الأصغر تظهر أولاً)')
+                            ->placeholder('0')
                             ->numeric()
                             ->default(0),
                         Forms\Components\Toggle::make('is_active')
                             ->label('نشط')
+                            ->helperText('هل تريد تفعيل هذه السلسلة لتظهر في الموقع؟')
                             ->default(true),
                     ])->columns(2),
             ]);

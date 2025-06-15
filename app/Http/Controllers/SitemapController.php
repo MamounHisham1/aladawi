@@ -6,8 +6,6 @@ use App\Models\Article;
 use App\Models\AudioLecture;
 use App\Models\Book;
 use App\Models\Fatwa;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class SitemapController extends Controller
 {
@@ -52,7 +50,7 @@ class SitemapController extends Controller
                     'loc' => route('fatwas.show', $fatwa->slug),
                     'lastmod' => $fatwa->updated_at->toISOString(),
                     'changefreq' => 'monthly',
-                    'priority' => '0.8'
+                    'priority' => '0.8',
                 ];
             });
 
@@ -71,7 +69,7 @@ class SitemapController extends Controller
                     'loc' => route('audio.show', $lecture->slug),
                     'lastmod' => $lecture->updated_at->toISOString(),
                     'changefreq' => 'monthly',
-                    'priority' => '0.7'
+                    'priority' => '0.7',
                 ];
             });
 
@@ -90,7 +88,7 @@ class SitemapController extends Controller
                     'loc' => route('books.show', $book->slug),
                     'lastmod' => $book->updated_at->toISOString(),
                     'changefreq' => 'monthly',
-                    'priority' => '0.7'
+                    'priority' => '0.7',
                 ];
             });
 
@@ -109,7 +107,7 @@ class SitemapController extends Controller
                     'loc' => route('articles.show', $article->slug),
                     'lastmod' => $article->updated_at->toISOString(),
                     'changefreq' => 'monthly',
-                    'priority' => '0.7'
+                    'priority' => '0.7',
                 ];
             });
 
@@ -120,6 +118,7 @@ class SitemapController extends Controller
     private function getLastModified($model)
     {
         $latest = $model::latest('updated_at')->first();
+
         return $latest ? $latest->updated_at->toISOString() : now()->toISOString();
     }
 }

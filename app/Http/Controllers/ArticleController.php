@@ -19,9 +19,9 @@ class ArticleController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('title_ar', 'like', "%{$search}%")
-                  ->orWhere('title_en', 'like', "%{$search}%")
-                  ->orWhere('content_ar', 'like', "%{$search}%")
-                  ->orWhere('content_en', 'like', "%{$search}%");
+                    ->orWhere('title_en', 'like', "%{$search}%")
+                    ->orWhere('content_ar', 'like', "%{$search}%")
+                    ->orWhere('content_en', 'like', "%{$search}%");
             });
         }
 

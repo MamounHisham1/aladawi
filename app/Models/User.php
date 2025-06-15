@@ -37,7 +37,7 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($user) {
-            if (!isset($user->rule)) {
+            if (! isset($user->rule)) {
                 $user->rule = UserRule::SUPER_ADMIN;
             }
         });
@@ -56,8 +56,8 @@ class User extends Authenticatable
     public function canPerform(string $ability): bool
     {
         $role = $this->getRole();
-        
-        return match($ability) {
+
+        return match ($ability) {
             'manage-users' => $role->canManageUsers(),
             'create-content' => $role->canCreateContent(),
             'edit-content' => $role->canEditContent(),
@@ -80,30 +80,30 @@ class User extends Authenticatable
     public function canEditContent($content): bool
     {
         $role = $this->getRole();
-        
+
         if ($role->canEditContent()) {
             return true;
         }
-        
+
         if ($role->canEditOwnContent() && $this->ownsContent($content)) {
             return true;
         }
-        
+
         return false;
     }
 
     public function canDeleteContent($content): bool
     {
         $role = $this->getRole();
-        
+
         if ($role->canDeleteContent()) {
             return true;
         }
-        
+
         if ($role->canDeleteOwnContent() && $this->ownsContent($content)) {
             return true;
         }
-        
+
         return false;
     }
 

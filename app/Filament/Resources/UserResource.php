@@ -2,17 +2,14 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
 use App\Enums\UserRule;
+use App\Filament\Resources\UserResource\Pages;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -39,39 +36,39 @@ class UserResource extends Resource
     public static function canEdit($record): bool
     {
         $user = Auth::user();
-        
+
         // Super admins can edit anyone
         if ($user->hasRole(UserRule::SUPER_ADMIN)) {
             return true;
         }
-        
+
         // Admins can edit users with lower roles
         if ($user->hasRole(UserRule::ADMIN)) {
-            return !in_array($record->getRole(), [UserRule::SUPER_ADMIN, UserRule::ADMIN]);
+            return ! in_array($record->getRole(), [UserRule::SUPER_ADMIN, UserRule::ADMIN]);
         }
-        
+
         return false;
     }
 
     public static function canDelete($record): bool
     {
         $user = Auth::user();
-        
+
         // Can't delete yourself
         if ($user->id === $record->id) {
             return false;
         }
-        
+
         // Super admins can delete anyone except other super admins
         if ($user->hasRole(UserRule::SUPER_ADMIN)) {
-            return !$record->hasRole(UserRule::SUPER_ADMIN);
+            return ! $record->hasRole(UserRule::SUPER_ADMIN);
         }
-        
+
         // Admins can delete users with lower roles
         if ($user->hasRole(UserRule::ADMIN)) {
-            return !in_array($record->getRole(), [UserRule::SUPER_ADMIN, UserRule::ADMIN]);
+            return ! in_array($record->getRole(), [UserRule::SUPER_ADMIN, UserRule::ADMIN]);
         }
-        
+
         return false;
     }
 
@@ -80,40 +77,48 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('معلومات المستخدم')
+                    ->description('المعلومات الأساسية للمستخدم')
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('الاسم')
+                            ->helperText('الاسم الكامل للمستخدم (مطلوب)')
+                            ->placeholder('أحمد محمد علي')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('email')
                             ->label('البريد الإلكتروني')
+                            ->helperText('عنوان البريد الإلكتروني للمستخدم (مطلوب وفريد)')
+                            ->placeholder('user@example.com')
                             ->email()
                             ->required()
                             ->maxLength(255)
                             ->unique(ignoreRecord: true),
                         Forms\Components\TextInput::make('password')
                             ->label('كلمة المرور')
+                            ->helperText('كلمة مرور قوية للمستخدم (مطلوبة عند الإنشاء فقط)')
                             ->password()
                             ->required(fn (string $context): bool => $context === 'create')
                             ->dehydrated(fn ($state) => filled($state))
                             ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
                     ])->columns(2),
-                
+
                 Forms\Components\Section::make('الصلاحيات')
+                    ->description('دور المستخدم وصلاحياته في النظام')
                     ->schema([
                         Forms\Components\Select::make('rule')
                             ->label('الدور')
+                            ->helperText('اختر دور المستخدم في النظام - كل دور له صلاحيات مختلفة')
                             ->options(function () {
                                 $user = Auth::user();
                                 $options = [];
-                                
+
                                 foreach (UserRule::cases() as $role) {
                                     // Show roles that current user can assign
                                     if (in_array($role, $user->getRole()->getAssignableRoles()) || $user->hasRole(UserRule::SUPER_ADMIN)) {
-                                        $options[$role->value] = $role->getDisplayName() . ' - ' . $role->getDescription();
+                                        $options[$role->value] = $role->getDisplayName().' - '.$role->getDescription();
                                     }
                                 }
-                                
+
                                 return $options;
                             })
                             ->required()

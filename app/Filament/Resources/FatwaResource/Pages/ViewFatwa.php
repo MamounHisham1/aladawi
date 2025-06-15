@@ -16,4 +16,4 @@ class ViewFatwa extends ViewRecord
             Actions\EditAction::make(),
         ];
     }
-} 
+}

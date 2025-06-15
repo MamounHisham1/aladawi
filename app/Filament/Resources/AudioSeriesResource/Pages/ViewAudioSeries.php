@@ -16,4 +16,4 @@ class ViewAudioSeries extends ViewRecord
             Actions\EditAction::make(),
         ];
     }
-} 
+}

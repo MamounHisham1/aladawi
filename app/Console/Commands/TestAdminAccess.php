@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
-use App\Enums\UserRule;
 use Illuminate\Console\Command;
 
 class TestAdminAccess extends Command
@@ -36,13 +35,13 @@ class TestAdminAccess extends Command
             $this->newLine();
             $this->info("User: {$user->name} ({$user->email})");
             $this->info("Role: {$user->getRole()->getDisplayName()}");
-            
+
             $canAccessAdmin = $user->canPerform('access-admin');
             $canCreateContent = $user->canPerform('create-content');
             $canEditContent = $user->canPerform('edit-content');
             $canDeleteContent = $user->canPerform('delete-content');
             $canManageUsers = $user->canPerform('manage-users');
-            
+
             $this->table(
                 ['Permission', 'Access'],
                 [
@@ -60,7 +59,7 @@ class TestAdminAccess extends Command
         $this->info('- Users with USER role should NOT have admin access');
         $this->info('- Users with CONTENT_MODERATOR role should have LIMITED admin access');
         $this->info('- Users with ADMIN/SUPER_ADMIN roles should have FULL admin access');
-        
+
         return Command::SUCCESS;
     }
 }

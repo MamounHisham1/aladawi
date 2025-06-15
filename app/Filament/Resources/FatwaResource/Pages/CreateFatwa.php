@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\FatwaResource\Pages;
 
 use App\Filament\Resources\FatwaResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +13,7 @@ class CreateFatwa extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['created_by'] = Auth::id();
+
         return $data;
     }
 }

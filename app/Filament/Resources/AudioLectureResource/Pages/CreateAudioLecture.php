@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\AudioLectureResource\Pages;
 
 use App\Filament\Resources\AudioLectureResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +13,7 @@ class CreateAudioLecture extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['created_by'] = Auth::id();
+
         return $data;
     }
 }

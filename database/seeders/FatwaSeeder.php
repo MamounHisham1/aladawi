@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Fatwa;
 use App\Models\Category;
+use App\Models\Fatwa;
 use Illuminate\Database\Seeder;
 
 class FatwaSeeder extends Seeder
@@ -15,7 +15,7 @@ class FatwaSeeder extends Seeder
     {
         $fatwaCategory = Category::where('type', 'fatwa')->first();
         $generalCategory = Category::where('type', 'general')->first();
-        
+
         $categoryId = $fatwaCategory ? $fatwaCategory->id : ($generalCategory ? $generalCategory->id : 1);
 
         $fatwas = [
@@ -74,7 +74,7 @@ class FatwaSeeder extends Seeder
                 'fatwa_date' => now()->subDays(10),
                 'is_featured' => true,
                 'is_published' => true,
-                
+
                 'category_id' => $categoryId,
             ],
             [
@@ -140,7 +140,7 @@ class FatwaSeeder extends Seeder
                 'fatwa_date' => now()->subDays(15),
                 'is_featured' => false,
                 'is_published' => true,
-                
+
                 'category_id' => $categoryId,
             ],
             [
@@ -198,7 +198,7 @@ class FatwaSeeder extends Seeder
                 'fatwa_date' => now()->subDays(20),
                 'is_featured' => true,
                 'is_published' => true,
-                
+
                 'category_id' => $categoryId,
             ],
             [
@@ -276,7 +276,7 @@ class FatwaSeeder extends Seeder
                 'fatwa_date' => now()->subDays(25),
                 'is_featured' => false,
                 'is_published' => true,
-                
+
                 'category_id' => $categoryId,
             ],
             [
@@ -342,7 +342,7 @@ class FatwaSeeder extends Seeder
                 'fatwa_date' => now()->subDays(30),
                 'is_featured' => true,
                 'is_published' => true,
-                
+
                 'category_id' => $categoryId,
             ],
         ];

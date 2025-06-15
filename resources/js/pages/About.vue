@@ -216,22 +216,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Current Status -->
-            <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-8 text-center">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 rtl-text">
-                    الوضع الحالي
-                </h3>
-                <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 rtl-content leading-relaxed">
-                    ولا زال الشيخ مشمرًا في الدعوة إلى الله ونشر العلم والتأليف، نسأل الله عز وجل أن يبارك في علمه وعمله.
-                </p>
-                <Link 
-                    :href="route('contact.index')" 
-                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 transition rtl-text"
-                >
-                    تواصل مع مطوري الموقع
-                </Link>
-            </div>
         </div>
     </AppLayout>
 </template>

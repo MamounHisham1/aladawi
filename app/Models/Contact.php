@@ -19,7 +19,7 @@ class Contact extends Model
         'is_read',
         'is_replied',
         'admin_reply',
-        'replied_at'
+        'replied_at',
     ];
 
     protected $casts = [
@@ -48,7 +48,7 @@ class Contact extends Model
         $this->update([
             'is_replied' => true,
             'admin_reply' => $reply,
-            'replied_at' => now()
+            'replied_at' => now(),
         ]);
     }
 }

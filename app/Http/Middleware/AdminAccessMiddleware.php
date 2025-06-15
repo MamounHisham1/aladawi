@@ -16,13 +16,13 @@ class AdminAccessMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return redirect()->route('login');
         }
 
         $user = Auth::user();
-        
-        if (!$user->canPerform('access-admin')) {
+
+        if (! $user->canPerform('access-admin')) {
             abort(404);
         }
 

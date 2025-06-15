@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use League\CommonMark\CommonMarkConverter;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use League\CommonMark\CommonMarkConverter;
 
 class Article extends Model
 {
@@ -30,7 +30,7 @@ class Article extends Model
         'is_published',
         'meta_title',
         'meta_description',
-        'created_by'
+        'created_by',
     ];
 
     protected $casts = [
@@ -74,16 +74,19 @@ class Article extends Model
 
     public function getContentArHtmlAttribute()
     {
-        $converter = new CommonMarkConverter();
+        $converter = new CommonMarkConverter;
+
         return $converter->convertToHtml($this->content_ar);
     }
 
     public function getContentEnHtmlAttribute()
     {
         if ($this->content_en) {
-            $converter = new CommonMarkConverter();
+            $converter = new CommonMarkConverter;
+
             return $converter->convertToHtml($this->content_en);
         }
+
         return '';
     }
 

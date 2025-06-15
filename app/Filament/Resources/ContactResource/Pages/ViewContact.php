@@ -16,4 +16,4 @@ class ViewContact extends ViewRecord
             Actions\EditAction::make(),
         ];
     }
-} 
+}
